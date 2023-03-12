@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/timekeeper.iml" filepath="$PROJECT_DIR$/timekeeper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/timekeeper_android.iml" filepath="$PROJECT_DIR$/android/timekeeper_android.iml" />
     </modules>
   </component>
 </project>
