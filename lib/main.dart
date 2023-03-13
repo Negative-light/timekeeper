@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Timekeeper',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Clock-In'),
     );
   }
 }
@@ -110,6 +110,17 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem> [
+          BottomNavigationBarItem(label: "TEST1", icon: Icon(Icons.accessibility)),
+          BottomNavigationBarItem(label: "TEST2", icon: Icon(Icons.accessibility)),
+          BottomNavigationBarItem(label: "TEST3", icon: Icon(Icons.accessibility), backgroundColor: Colors.red),
+          BottomNavigationBarItem(label: "TEST4", icon: Icon(Icons.accessibility), backgroundColor: Colors.red),
+        ],
+
+      )
     );
   }
 }
+
+
