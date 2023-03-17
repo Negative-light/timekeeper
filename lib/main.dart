@@ -49,6 +49,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  int _currentNavIndex = 0;
 
   void _incrementCounter() {
     setState(() {
@@ -58,6 +59,12 @@ class _MyHomePageState extends State<MyHomePage> {
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
       _counter++;
+    });
+  }
+
+  void _onNavBarClick(int index) {
+    setState(() {
+      _currentNavIndex = index;
     });
   }
 
@@ -102,6 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
+            Text('Current Inex = $_currentNavIndex')
           ],
         ),
       ),
@@ -114,13 +122,24 @@ class _MyHomePageState extends State<MyHomePage> {
         items: const <BottomNavigationBarItem> [
           BottomNavigationBarItem(label: "TEST1", icon: Icon(Icons.accessibility)),
           BottomNavigationBarItem(label: "TEST2", icon: Icon(Icons.accessibility)),
-          BottomNavigationBarItem(label: "TEST3", icon: Icon(Icons.accessibility), backgroundColor: Colors.red),
-          BottomNavigationBarItem(label: "TEST4", icon: Icon(Icons.accessibility), backgroundColor: Colors.red),
+          BottomNavigationBarItem(label: "TEST3", icon: Icon(Icons.accessibility)),
+          BottomNavigationBarItem(label: "TEST4", icon: Icon(Icons.accessibility)),
         ],
+        selectedItemColor: Colors.amber[800],
+        unselectedItemColor: Colors.black,
+        currentIndex: _currentNavIndex,
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
+        onTap: _onNavBarClick,
+
 
       )
+
     );
   }
-}
+
+
+  }
+
 
 
