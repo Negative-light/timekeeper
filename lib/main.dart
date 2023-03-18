@@ -1,5 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+
+import 'package:timekeeper/charge_codes_widget.dart';
+import 'package:timekeeper/clock_in_widget.dart';
+import 'package:timekeeper/projects_widget.dart';
+import 'package:timekeeper/stats_widget.dart';
+import 'package:timekeeper/today_info_widget.dart';
 import 'package:timekeeper/firebase_options.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -71,7 +77,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Timekeeper',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -84,7 +90,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Clock-In'),
     );
   }
 }
@@ -108,20 +114,26 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  int _currentNavIndex = 2;
+  final screens = [
+    const StatsWidget(),
+    const TodayWidget(),
+    const ClockInWidget(),
+    const ChargeCodesWidget(),
+    const ProjectsWidget()
+  ];
+
 
   void _incrementCounter() {
     Database db = Database.instance;
     dynamic lUser = db.getUser("testUser");
     db.storeUser("testEmail123@123.com", "10:37test", "password", 4572843234, "e3482945234");
+  }
 
+
+  void _onNavBarClick(int index) {
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
+      _currentNavIndex = index;
     });
   }
 
@@ -139,41 +151,28 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
+      body:  IndexedStack(index: _currentNavIndex, children: screens,),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem> [
+          BottomNavigationBarItem(label: "Stats", icon: Icon(Icons.accessibility)),
+          BottomNavigationBarItem(label: "Today", icon: Icon(Icons.accessibility)),
+          BottomNavigationBarItem(icon: Icon(Icons.hourglass_empty), label: "HOME"),
+          BottomNavigationBarItem(label: "Charge Codes", icon: Icon(Icons.accessibility)),
+          BottomNavigationBarItem(label: "Projects", icon: Icon(Icons.accessibility)),
+        ],
+        selectedItemColor: Colors.amber[800],
+        unselectedItemColor: Colors.black,
+        currentIndex: _currentNavIndex,
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
+        onTap: _onNavBarClick,
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+
     );
   }
-}
+
+
+  }
+
+
+
