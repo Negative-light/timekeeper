@@ -1,7 +1,67 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:timekeeper/firebase_options.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-void main() {
+Future <void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  Database db = Database.instance;
+  db._connectToDatabase();
+
   runApp(const MyApp());
+}
+class Database {
+  //singleton class database reference
+  Database._privateConstructor();
+  static final Database _instance = Database._privateConstructor();
+  static Database get instance => _instance;
+
+  //firestore database reference
+  dynamic db;
+
+  //get firestore reference
+  void _connectToDatabase() async {
+    await Firebase.initializeApp (
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+
+    db = FirebaseFirestore.instance;
+  }
+
+  //get a user by username
+  dynamic getUser(String username){
+    dynamic user;
+    db.collection("users").where("name", isEqualTo: username).get().then(
+          (querySnapshot) {
+        print("Successfully completed");
+        for (var docSnapshot in querySnapshot.docs) {
+          print('${docSnapshot.id} => ${docSnapshot.data()}');
+          user =  docSnapshot;
+        }
+      },
+      onError: (e) => print("Error completing: $e"),
+    );
+    return user;
+  }
+
+  //publishes user to db
+  void storeUser(String email, String name, String password, int phone,  supervisorId){
+    final users = db.collection("users");
+
+    final data = <String, dynamic>{
+      "email": email,
+      "name": name,
+      "password" : password,
+      "phone": phone,
+      "supervisorId": supervisorId,
+    };
+
+    db.collection("users").add(data).then((documentSnapshot) =>
+        print("Added Data with ID: ${documentSnapshot.id}"),
+        onError: (e) => print("Error adding user : $e"));
+  }
+
 }
 
 class MyApp extends StatelessWidget {
@@ -51,6 +111,10 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   void _incrementCounter() {
+    Database db = Database.instance;
+    dynamic lUser = db.getUser("testUser");
+    db.storeUser("testEmail123@123.com", "10:37test", "password", 4572843234, "e3482945234");
+
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
