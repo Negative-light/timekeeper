@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:timekeeper/charge_codes_widget.dart';
 import 'package:timekeeper/clock_in_widget.dart';
+import 'package:timekeeper/projects_widget.dart';
+import 'package:timekeeper/stats_widget.dart';
+import 'package:timekeeper/today_info_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -49,8 +53,14 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _currentNavIndex = 0;
-
+  int _currentNavIndex = 2;
+  final screens = [
+    const StatsWidget(),
+    const TodayWidget(),
+    const ClockInWidget(),
+    const ChargeCodesWidget(),
+    const ProjectsWidget()
+  ];
 
   void _onNavBarClick(int index) {
     setState(() {
@@ -72,13 +82,14 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body:  const Center( child: ClockInWidget() ),
+      body:  IndexedStack(index: _currentNavIndex, children: screens,),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem> [
-          BottomNavigationBarItem(label: "TEST1", icon: Icon(Icons.accessibility)),
-          BottomNavigationBarItem(label: "TEST2", icon: Icon(Icons.accessibility)),
-          BottomNavigationBarItem(label: "TEST3", icon: Icon(Icons.accessibility)),
-          BottomNavigationBarItem(label: "TEST4", icon: Icon(Icons.accessibility)),
+          BottomNavigationBarItem(label: "Stats", icon: Icon(Icons.accessibility)),
+          BottomNavigationBarItem(label: "Today", icon: Icon(Icons.accessibility)),
+          BottomNavigationBarItem(icon: Icon(Icons.hourglass_empty), label: "HOME"),
+          BottomNavigationBarItem(label: "Charge Codes", icon: Icon(Icons.accessibility)),
+          BottomNavigationBarItem(label: "Projects", icon: Icon(Icons.accessibility)),
         ],
         selectedItemColor: Colors.amber[800],
         unselectedItemColor: Colors.black,

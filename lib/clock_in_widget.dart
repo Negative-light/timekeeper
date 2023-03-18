@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 class ClockInWidget extends StatefulWidget {
@@ -7,7 +9,7 @@ class ClockInWidget extends StatefulWidget {
   State<StatefulWidget> createState() => _ClockInState();
 }
 
-class clockButton extends StatelessWidget {
+class ClockButton extends StatelessWidget {
   final VoidCallback? onPressed;
   final Icon icon;
 
@@ -19,7 +21,8 @@ class clockButton extends StatelessWidget {
     minimumSize: Size.infinite,
   );
 
-  const clockButton({super.key,
+  const ClockButton({
+    super.key,
     required this.onPressed,
     required this.icon,
   });
@@ -29,53 +32,69 @@ class clockButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(20),
       child: ElevatedButton(
-        onPressed: onPressed, style: buttonStyle, child: icon,),);
+        onPressed: onPressed,
+        style: buttonStyle,
+        child: icon,
+      ),
+    );
   }
+}
 
+enum ClockInState {
+  clockIn,
+  lunch,
+  lunchClockIn,
+  clockOut
 }
 
 class _ClockInState extends State<ClockInWidget> {
-  int _currentState =
-  0; //0 => Clock In Button Only, 1 => Clock Out & Lunch, 2 => Clock out
-  int _nextState = 1;
 
+  ClockInState _currentState =
+      ClockInState.clockIn; //0 => Clock In Button Only, 1 => Clock Out & Lunch, 2 => Clock out
 
   @override
   Widget build(BuildContext context) {
-    if (_currentState == 0) {
+    if (_currentState == ClockInState.clockIn || _currentState == ClockInState.lunchClockIn) {
+      //Clock In Only
       return Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Flexible(
               fit: FlexFit.tight,
-              flex: 1,
-              child: clockButton(onPressed: _clockIn,
-                icon: const Icon(Icons.access_time_filled),)
-          ),
+              flex: 4,
+              child: ClockButton(
+                onPressed: _clockIn,
+                icon: const Icon(Icons.access_time_filled),
+              )),
+          const Flexible(fit: FlexFit.loose, flex: 1,child: Text("Clock In"),)
         ],
       );
-    } else if (_currentState == 1) {
+    } else if (_currentState == ClockInState.lunch) {
       //Clock Out OR Lunch
       return Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Flexible(
               fit: FlexFit.tight,
-              flex: 1,
-              child: clockButton(
-                onPressed: _clockOut, icon: const Icon(Icons.access_time),)
-          ),
+              flex: 10,
+              child: ClockButton(
+                onPressed: _lunch,
+                icon: const Icon(Icons.access_time),
+              )),
+          const Flexible(fit: FlexFit.loose, flex: 1,child: Text("Lunch"),),
           Flexible(
             fit: FlexFit.tight,
-            flex: 1,
-            child: clockButton(
-              onPressed: _lunch, icon: const Icon(Icons.access_alarms),
+            flex: 10,
+            child: ClockButton(
+              onPressed: _clockOut,
+              icon: const Icon(Icons.access_alarms),
             ),
           ),
+          const Flexible(fit: FlexFit.loose, flex: 1,child: Text("Clock Out"),)
         ],
       );
-    } else if (_currentState == 2) {
+    } else if (_currentState == ClockInState.clockOut) {
       //Clock OUT
       return Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -83,10 +102,13 @@ class _ClockInState extends State<ClockInWidget> {
         children: [
           Flexible(
             fit: FlexFit.tight,
-            flex: 1,
-            child: clockButton(
-              onPressed: _clockOut, icon: const Icon(Icons.access_time),),
-          )
+            flex: 10,
+            child: ClockButton(
+              onPressed: _clockOut,
+              icon: const Icon(Icons.access_alarms),
+            ),
+          ),
+          const Flexible(fit: FlexFit.loose, flex: 1,child: Text("Clock Out"),)
         ],
       );
     } else {
@@ -100,28 +122,33 @@ class _ClockInState extends State<ClockInWidget> {
   void _clockIn() {
     //TODO: Set Clock in in Database
     setState(() {
-      _currentState = _nextState;
-      if (_nextState == 2) {
-        _nextState = 0;
-      } else {
-        _nextState = 1;
+
+      if(_currentState == ClockInState.clockIn)
+        {
+          //log("NEXT STATE LUNCH");
+          _currentState = ClockInState.lunch;
+        }
+      else if (_currentState == ClockInState.lunchClockIn){
+        //log("NEXT STATE CLOCK OUT");
+        _currentState = ClockInState.clockOut;
       }
+
     });
   }
 
   void _lunch() {
     //TODO: Set Lunch in Database
     setState(() {
-      _currentState = 0;
-      _nextState = 2;
+     _currentState = ClockInState.lunchClockIn;
+     //log("NEXT STATE LUNCH CLOCK IN");
+
     });
   }
 
   void _clockOut() {
     //TODO: Set Clock Out in Database
     setState(() {
-      _currentState = 0;
-      _nextState = 1;
+      _currentState = ClockInState.clockIn;
     });
   }
 }

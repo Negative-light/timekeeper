@@ -9,9 +9,13 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ced2db6-8168-46e8-afa1-5db060686f7f" name="Changes" comment="Created Flutter Project">
-      <change afterPath="$PROJECT_DIR$/lib/CenterButton.dart" afterDir="false" />
+    <list default="true" id="2ced2db6-8168-46e8-afa1-5db060686f7f" name="Changes" comment="Made Buttons Toggle state and be distrabuted in the column">
+      <change afterPath="$PROJECT_DIR$/lib/charge_codes_widget.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/projects_widget.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/stats_widget.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/today_info_widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/clock_in_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/clock_in_widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -54,7 +58,6 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "cidr.known.project.marker": "true",
-    "dart.analysis.tool.window.visible": "false",
     "io.flutter.reload.alreadyRun": "true",
     "show.migrate.to.gradle.popup": "false"
   }
@@ -88,7 +91,28 @@
       <option name="project" value="LOCAL" />
       <updated>1678649565681</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added Bottom Navigation Bar">
+      <created>1678749573964</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1678749573964</updated>
+    </task>
+    <task id="LOCAL-00004" summary="got Bottom Navigation Bar Working">
+      <created>1679013075818</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1679013075818</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Made Buttons Toggle state and be distrabuted in the column">
+      <created>1679071402750</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1679071402750</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -110,6 +134,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Created Flutter Project" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created Flutter Project" />
+    <MESSAGE value="Added Bottom Navigation Bar" />
+    <MESSAGE value="got Bottom Navigation Bar Working" />
+    <MESSAGE value="Made Buttons Toggle state and be distrabuted in the column" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made Buttons Toggle state and be distrabuted in the column" />
   </component>
 </project>
