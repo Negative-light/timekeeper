@@ -9,11 +9,8 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ced2db6-8168-46e8-afa1-5db060686f7f" name="Changes" comment="Made Buttons Toggle state and be distrabuted in the column">
-      <change afterPath="$PROJECT_DIR$/lib/charge_codes_widget.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/projects_widget.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/stats_widget.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/today_info_widget.dart" afterDir="false" />
+    <list default="true" id="2ced2db6-8168-46e8-afa1-5db060686f7f" name="Changes" comment="Added Widgets for new pages">
+      <change afterPath="$PROJECT_DIR$/lib/login_page/login_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/clock_in_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/clock_in_widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
@@ -52,16 +49,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "cidr.known.project.marker": "true",
-    "io.flutter.reload.alreadyRun": "true",
-    "show.migrate.to.gradle.popup": "false"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
       <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
@@ -112,7 +110,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679071402750</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added Widgets for new pages">
+      <created>1679152974975</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1679152974975</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -137,6 +142,7 @@
     <MESSAGE value="Added Bottom Navigation Bar" />
     <MESSAGE value="got Bottom Navigation Bar Working" />
     <MESSAGE value="Made Buttons Toggle state and be distrabuted in the column" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made Buttons Toggle state and be distrabuted in the column" />
+    <MESSAGE value="Added Widgets for new pages" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Widgets for new pages" />
   </component>
 </project>
