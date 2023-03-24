@@ -59,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
     const TodayWidget(),
     const ClockInWidget(),
     const ChargeCodesWidget(),
-    const ProjectsWidget()
+    ProjectsWidget()
   ];
 
   void _onNavBarClick(int index) {
