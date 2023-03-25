@@ -1,4 +1,6 @@
-import 'package:firebase_core/firebase_core.dart';
+
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 import 'package:timekeeper/charge_codes_widget.dart';
@@ -6,69 +8,19 @@ import 'package:timekeeper/clock_in_widget.dart';
 import 'package:timekeeper/projects_widget.dart';
 import 'package:timekeeper/stats_widget.dart';
 import 'package:timekeeper/today_info_widget.dart';
-import 'package:timekeeper/firebase_options.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:timekeeper/databaseInterface.dart';
+import 'package:timekeeper/dataModel.dart';
+
 
 Future <void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   Database db = Database.instance;
-  db._connectToDatabase();
+  db.connectToDatabase();
 
   runApp(const MyApp());
 }
-class Database {
-  //singleton class database reference
-  Database._privateConstructor();
-  static final Database _instance = Database._privateConstructor();
-  static Database get instance => _instance;
 
-  //firestore database reference
-  dynamic db;
-
-  //get firestore reference
-  void _connectToDatabase() async {
-    await Firebase.initializeApp (
-      options: DefaultFirebaseOptions.currentPlatform,
-    );
-
-    db = FirebaseFirestore.instance;
-  }
-
-  //get a user by username
-  dynamic getUser(String username){
-    dynamic user;
-    db.collection("users").where("name", isEqualTo: username).get().then(
-          (querySnapshot) {
-        print("Successfully completed");
-        for (var docSnapshot in querySnapshot.docs) {
-          print('${docSnapshot.id} => ${docSnapshot.data()}');
-          user =  docSnapshot;
-        }
-      },
-      onError: (e) => print("Error completing: $e"),
-    );
-    return user;
-  }
-
-  //publishes user to db
-  void storeUser(String email, String name, String password, int phone,  supervisorId){
-    final users = db.collection("users");
-
-    final data = <String, dynamic>{
-      "email": email,
-      "name": name,
-      "password" : password,
-      "phone": phone,
-      "supervisorId": supervisorId,
-    };
-
-    db.collection("users").add(data).then((documentSnapshot) =>
-        print("Added Data with ID: ${documentSnapshot.id}"),
-        onError: (e) => print("Error adding user : $e"));
-  }
-
-}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -124,17 +76,33 @@ class _MyHomePageState extends State<MyHomePage> {
   ];
 
 
-  void _incrementCounter() {
-    Database db = Database.instance;
-    dynamic lUser = db.getUser("testUser");
-    db.storeUser("testEmail123@123.com", "10:37test", "password", 4572843234, "e3482945234");
-  }
-
-
   void _onNavBarClick(int index) {
     setState(() {
       _currentNavIndex = index;
     });
+
+    //test to get data
+    Database db = Database.instance;
+    db.getUser('testUser', 'password');
+    db.getChargeCodes();
+
+    DataModel dm = DataModel.instance;
+    print('id = ' + dm.user.id);
+    print('name = ' + dm.user.name);
+    print('password = ' + dm.user.password);
+    print('email = ' + dm.user.email);
+    print('phone = ' + dm.user.phone.toString());
+    print('supervisor id = ' + dm.user.supervisorId);
+
+    for(int i = 0; i < dm.chargeCodes.length; i++) {
+      print('id = ' + dm.chargeCodes[i].id);
+      print('name = ' +  dm.chargeCodes[i].name);
+      print('budget = ' +  dm.chargeCodes[i].budget.toString());
+      print('description = ' +  dm.chargeCodes[i].description);
+      print('status = ' +  dm.chargeCodes[i].status.toString());
+      print('project = ' +  dm.chargeCodes[i].project);
+    }
+
   }
 
   @override
