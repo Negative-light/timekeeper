@@ -10,11 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ced2db6-8168-46e8-afa1-5db060686f7f" name="Changes" comment="Made Buttons Toggle state and be distrabuted in the column">
-      <change afterPath="$PROJECT_DIR$/lib/charge_codes_widget.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/projects_widget.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/stats_widget.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/today_info_widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/charge_codes_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/charge_codes_widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/clock_in_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/clock_in_widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
     </list>
@@ -126,7 +123,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
