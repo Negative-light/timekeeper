@@ -1,3 +1,5 @@
+import 'objects/charge_code.dart';
+import 'objects/user.dart';
 class DataModel {
   //singleton class data model reference
   DataModel._privateConstructor();
@@ -11,22 +13,5 @@ class DataModel {
   List<ChargeCode> chargeCodes = <ChargeCode>[];
 }
 
-class User {
-  bool isLoggedIn = false;
-  String id = "";
-  String email = "";
-  String name = "";
-  String password = "";
-  int phone = 0;
-  String supervisorId = "";
-}
 
-class ChargeCode {
-  String id = "";
-  int budget = 0;
-  int status = 0;
-  String description = "";
-  String name = "";
-  String ownerId = "";
-  String project = "";
-}
+
