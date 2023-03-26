@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 import 'package:timekeeper/charge_codes_widget.dart';
 import 'package:timekeeper/clock_in_widget.dart';
+import 'package:timekeeper/login_page/login_page.dart';
 import 'package:timekeeper/projects_widget.dart';
 import 'package:timekeeper/stats_widget.dart';
 import 'package:timekeeper/today_info_widget.dart';
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
       title: 'Timekeeper',
       theme: ThemeData(
@@ -42,9 +44,35 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Clock-In'),
+      home:  Main()
     );
   }
+}
+
+class Main extends StatefulWidget {
+  @override
+  _MainAppState createState() => _MainAppState();
+}
+
+class _MainAppState extends State<Main> {
+  bool _isLoggedIn = false;
+
+  void initState() {
+    super.initState();
+    //TODO: Check if user is logged in or not
+  }
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: "Time Keeper",
+      theme: ThemeData(
+        primarySwatch: Colors.deepPurple,
+
+      ),
+      home: _isLoggedIn ? const MyHomePage(title: "Time Keeper") : LoginPage()
+    );
+  }
+  
 }
 
 class MyHomePage extends StatefulWidget {
