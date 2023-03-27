@@ -12,6 +12,6 @@ class client {
 
   
 
-  (this.address, this.contactname, this.email,  this.name,
+  client(this.address, this.contactname, this.email,  this.name,
       this.phone);
 }
