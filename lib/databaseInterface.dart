@@ -27,34 +27,36 @@ class Database {
   }
 
   //get a user by username
-  bool getUser(String username, String password) {
-    bool gotUser = false;
-    db
-        .collection("users")
-        .where("name", isEqualTo: username)
-        .where("password", isEqualTo: password)
-        .get()
-        .then(
-      (querySnapshot) {
-        print("Successfully completed");
-        for (var docSnapshot in querySnapshot.docs) {
-          gotUser = true;
-          final data = docSnapshot.data() as Map<String, dynamic>;
-          User user = User();
-          user.id = docSnapshot.id;
-          user.email = data['email'];
-          user.name = data['name'];
-          user.password = data['password'];
-          user.phone = data['phone'];
-          user.supervisorId = data['supervisorId'];
-          user.isLoggedIn = true;
-          DataModel.instance.user = user;
-        }
-      },
-      onError: (e) => print("Error completing: $e"),
-    );
+  Future<bool> getUser(String email, String password) async {
+      bool gotUser = false;
 
-    return gotUser;
+      await db
+          .collection("users")
+          .where("email", isEqualTo: email)
+          .where("password", isEqualTo: password)
+          .get()
+          .then(
+            (querySnapshot) {
+          print("Successfully completed");
+
+          for (var docSnapshot in querySnapshot.docs) {
+            gotUser = true;
+            final data = docSnapshot.data() as Map<String, dynamic>;
+            User user = User();
+            user.id = docSnapshot.id;
+            user.email = data['email'];
+            user.name = data['name'];
+            user.password = data['password'];
+            user.phone = data['phone'];
+            user.supervisorId = data['supervisorId'];
+            user.isLoggedIn = true;
+            DataModel.instance.user = user;
+          }
+        },
+        onError: (e) => print("Error completing: $e"),
+      );
+
+      return gotUser;
   }
 
   //publishes user to db

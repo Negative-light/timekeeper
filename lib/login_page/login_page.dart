@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:timekeeper/main.dart';
+import 'package:timekeeper/databaseInterface.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -70,14 +73,21 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   const SizedBox(height: 20.0),
                   ElevatedButton(
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        // TODO: Perform login authentication
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(builder: (context) => const MyApp()),
-                        );
-                      }
+                    onPressed: () async {
+                 //     if (_formKey.currentState!.validate()) {
+
+                        Database db = Database.instance;
+                        bool exists = await db.getUser(_emailController.text, _passwordController.text);
+                        print('USER EXISTS = ' + exists.toString());
+
+                        if(exists) {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const MyApp()),
+                          );
+                        }
+                  //    }
                     },
                     child: const Text('Login'),
                   ),
