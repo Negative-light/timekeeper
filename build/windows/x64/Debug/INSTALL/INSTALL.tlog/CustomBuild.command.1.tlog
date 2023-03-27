@@ -1,0 +1,10 @@
+^D:\ANDROIDSTUDIOPROJECTS\TIMEKEEPER\BUILD\WINDOWS\CMAKEFILES\15AC86F9B23E1715BAF4CA7443A66059\INSTALL_FORCE.RULE
+setlocal
+cd .
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

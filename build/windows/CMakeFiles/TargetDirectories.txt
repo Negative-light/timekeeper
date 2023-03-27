@@ -1,0 +1,10 @@
+D:/AndroidStudioProjects/timekeeper/build/windows/CMakeFiles/INSTALL.dir
+D:/AndroidStudioProjects/timekeeper/build/windows/CMakeFiles/ALL_BUILD.dir
+D:/AndroidStudioProjects/timekeeper/build/windows/CMakeFiles/ZERO_CHECK.dir
+D:/AndroidStudioProjects/timekeeper/build/windows/flutter/CMakeFiles/flutter_wrapper_plugin.dir
+D:/AndroidStudioProjects/timekeeper/build/windows/flutter/CMakeFiles/flutter_wrapper_app.dir
+D:/AndroidStudioProjects/timekeeper/build/windows/flutter/CMakeFiles/flutter_assemble.dir
+D:/AndroidStudioProjects/timekeeper/build/windows/flutter/CMakeFiles/INSTALL.dir
+D:/AndroidStudioProjects/timekeeper/build/windows/runner/CMakeFiles/timekeeper.dir
+D:/AndroidStudioProjects/timekeeper/build/windows/runner/CMakeFiles/INSTALL.dir
+D:/AndroidStudioProjects/timekeeper/build/windows/runner/CMakeFiles/ALL_BUILD.dir

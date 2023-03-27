@@ -1,0 +1,10 @@
+^D:\ANDROIDSTUDIOPROJECTS\TIMEKEEPER\BUILD\WINDOWS\CMAKEFILES\15AC86F9B23E1715BAF4CA7443A66059\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SD:/AndroidStudioProjects/timekeeper/windows -BD:/AndroidStudioProjects/timekeeper/build/windows --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file D:/AndroidStudioProjects/timekeeper/build/windows/timekeeper.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
