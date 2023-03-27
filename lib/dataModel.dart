@@ -15,7 +15,19 @@ class DataModel {
 
   //list containing charge code objects
   List<ChargeCode> chargeCodes = <ChargeCode>[];
-    //list containing charge code objects
+    
+  //list containing punch in objects 
+  List<User_budget> userbudget = <User_budegt>[];
+     
+  //list containing clientss 
+  List<client> clients = <client>[];
+      
+  //list containing projects 
+  List<projects> projects = <projects> []; 
+      
+  //list containing clientss 
+  List<Punch_in> punchins = <Punch_in> []; 
+  
 }
 
 
