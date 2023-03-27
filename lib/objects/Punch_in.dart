@@ -1,8 +1,8 @@
-class User {
+class punchIn {
 
    final String chargecode;
    final  DateTime punchintime;
    final int punchintype; 
    final int userid;
- user(this.chargecoe, this.punchintype, this.punchintime,  this.userid);
+ PunchIn(this.chargecoe, this.punchintype, this.punchintime,  this.userid);
 }
