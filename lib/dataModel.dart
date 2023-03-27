@@ -26,7 +26,7 @@ class DataModel {
   List<projects> projects = <projects> []; 
       
   //list containing punch ins
-  List<Punch_in> punchins = <Punch_in> []; 
+  List<punchIn> punchins = <Punch_in> []; 
   
 }
 
