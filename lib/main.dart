@@ -1,14 +1,27 @@
+
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+
 import 'package:timekeeper/charge_codes_widget.dart';
 import 'package:timekeeper/clock_in_widget.dart';
 import 'package:timekeeper/login_page/login_page.dart';
 import 'package:timekeeper/projects_widget.dart';
 import 'package:timekeeper/stats_widget.dart';
 import 'package:timekeeper/today_info_widget.dart';
+import 'package:timekeeper/databaseInterface.dart';
+import 'package:timekeeper/dataModel.dart';
 
-void main() {
+
+Future <void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  Database db = Database.instance;
+  db.connectToDatabase();
+
   runApp(const MyApp());
 }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -90,10 +103,34 @@ class _MyHomePageState extends State<MyHomePage> {
     const ProjectsWidget()
   ];
 
+
   void _onNavBarClick(int index) {
     setState(() {
       _currentNavIndex = index;
     });
+
+    //test to get data
+    Database db = Database.instance;
+    db.getUser('testUser', 'password');
+    db.getChargeCodes();
+
+    DataModel dm = DataModel.instance;
+    print('id = ' + dm.user.id);
+    print('name = ' + dm.user.name);
+    print('password = ' + dm.user.password);
+    print('email = ' + dm.user.email);
+    print('phone = ' + dm.user.phone.toString());
+    print('supervisor id = ' + dm.user.supervisorId);
+
+    for(int i = 0; i < dm.chargeCodes.length; i++) {
+      print('id = ' + dm.chargeCodes[i].id);
+      print('name = ' +  dm.chargeCodes[i].name);
+      print('budget = ' +  dm.chargeCodes[i].budget.toString());
+      print('description = ' +  dm.chargeCodes[i].description);
+      print('status = ' +  dm.chargeCodes[i].status.toString());
+      print('project = ' +  dm.chargeCodes[i].project);
+    }
+
   }
 
   @override
