@@ -9,8 +9,11 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ced2db6-8168-46e8-afa1-5db060686f7f" name="Changes" comment="Created Display for Charge Codes">
+    <list default="true" id="2ced2db6-8168-46e8-afa1-5db060686f7f" name="Changes" comment="Made Buttons Toggle state and be distrabuted in the column">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/charge_codes_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/charge_codes_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/clock_in_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/clock_in_widget.dart" afterDir="false" />
+
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/stats_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/stats_widget.dart" afterDir="false" />
     </list>
@@ -133,7 +136,8 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="charge_codes_widget_implementation" />
+                        <option value="master" />
+                        <option value=" 8-merge-gui-elements" />
                       </list>
                     </value>
                   </entry>

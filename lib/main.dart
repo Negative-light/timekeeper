@@ -119,7 +119,7 @@ class _MyHomePageState extends State<MyHomePage> {
     StatsWidget(),
     const TodayWidget(),
     const ClockInWidget(),
-    const ChargeCodesWidget(),
+    ChargeCodesWidget(),
     const ProjectsWidget()
   ];
 
