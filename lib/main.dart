@@ -116,7 +116,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _currentNavIndex = 2;
   final screens = [
-    const StatsWidget(),
+    StatsWidget(),
     const TodayWidget(),
     const ClockInWidget(),
     const ChargeCodesWidget(),
