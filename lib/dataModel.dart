@@ -17,7 +17,7 @@ class DataModel {
   List<ChargeCode> chargeCodes = <ChargeCode>[];
     
   //list containing punch in objects 
-  List<User_budget> userbudget = <User_budegt>[];
+  List<UserBudget> userbudget = <UserBudegt>[];
      
   //list containing clientss 
   List<client> clients = <client>[];
@@ -26,7 +26,7 @@ class DataModel {
   List<projects> projects = <projects> []; 
       
   //list containing punch ins
-  List<punchIn> punchins = <Punch_in> []; 
+  List<punchIn> punchins = <punchIn> []; 
   
 }
 
