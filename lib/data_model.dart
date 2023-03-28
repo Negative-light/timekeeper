@@ -1,9 +1,10 @@
+import 'objects/project.dart';
+import 'objects/user_budget.dart';
 import 'objects/charge_code.dart';
 import 'objects/user.dart';
-import 'objects/punch_in.dart';
 import 'objects/client.dart';
-import 'objects/projects.dart';
-import 'objects/user_budget.dart';
+import 'objects/punch_in.dart';
+
 class DataModel {
   //singleton class data model reference
   DataModel._privateConstructor();
@@ -17,16 +18,16 @@ class DataModel {
   List<ChargeCode> chargeCodes = <ChargeCode>[];
     
   //list containing punch in objects 
-  List<UserBudget> userbudget = <UserBudegt>[];
+  List<UserBudget> userBudget = <UserBudget>[];
      
-  //list containing clientss 
-  List<client> clients = <client>[];
+  //list containing clients
+  List<Client> clients = <Client>[];
       
   //list containing projects 
-  List<projects> projects = <projects> []; 
+  List<Project> projects = <Project> [];
       
   //list containing punch ins
-  List<punchIn> punchins = <punchIn> []; 
+  List<PunchIn> punches = <PunchIn> [];
   
 }
 

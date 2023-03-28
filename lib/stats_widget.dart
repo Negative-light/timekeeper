@@ -14,10 +14,10 @@ class StatsWidget extends StatelessWidget {
             Card(
             child: Column(
               children: [
-                Text('Today'),
+                const Text('Today'),
                 Text('Clock in $clickIn'),
                 Text('Clock out $now'),
-                Text('Lunch NONE')
+                const Text('Lunch NONE')
 
               ],
             ),
@@ -25,7 +25,7 @@ class StatsWidget extends StatelessWidget {
             Card(
               child: Column(
                 children: [
-                  Text('Status'),
+                  const Text('Status'),
                   Text('Averga Worked Hours: $avgWorkedHours'),
                   Text('Total Worked This Week $totalWorkedThisWeek')
                 ],

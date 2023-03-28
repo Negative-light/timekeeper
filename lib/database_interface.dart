@@ -1,6 +1,8 @@
+// ignore_for_file: avoid_print
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:timekeeper/dataModel.dart';
+import 'package:timekeeper/data_model.dart';
 import 'package:timekeeper/firebase_options.dart';
 
 import 'objects/charge_code.dart';
@@ -37,6 +39,7 @@ class Database {
           .get()
           .then(
             (querySnapshot) {
+
           print("Successfully completed");
 
           for (var docSnapshot in querySnapshot.docs) {
@@ -53,7 +56,7 @@ class Database {
             DataModel.instance.user = user;
           }
         },
-        onError: (e) => print("Error completing: $e"),
+        //onError: (e) => print("Error completing: $e"),
       );
 
       return gotUser;
@@ -80,7 +83,6 @@ class Database {
     bool gotCodes = false;
     db.collection("chargeCodes").get().then(
       (querySnapshot) {
-        print("Successfully completed");
         List<ChargeCode> chargeCodes = <ChargeCode>[];
         for (var docSnapshot in querySnapshot.docs) {
           gotCodes = true;

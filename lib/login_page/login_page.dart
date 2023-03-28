@@ -1,12 +1,15 @@
-import 'dart:io';
+
+// ignore_for_file: avoid_print, prefer_interpolation_to_compose_strings
 
 import 'package:flutter/material.dart';
 import 'package:timekeeper/main.dart';
-import 'package:timekeeper/databaseInterface.dart';
+import 'package:timekeeper/database_interface.dart';
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
   @override
-  _LoginPageState createState() => _LoginPageState();
+  createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {

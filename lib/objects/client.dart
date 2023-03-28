@@ -1,7 +1,7 @@
-class client {
+class Client {
   final String address ;
 
-  final String contactname;
+  final String contactName;
 
   final String email;
 
@@ -12,7 +12,7 @@ class client {
 
   
 
-  client(this.address, this.contactname, this.email,  this.name,
+  Client(this.address, this.contactName, this.email,  this.name,
       this.phone);
 }
 
