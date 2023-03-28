@@ -1,5 +1,6 @@
 
-import 'dart:io';
+// ignore_for_file: avoid_print
+
 
 import 'package:flutter/material.dart';
 
@@ -9,8 +10,8 @@ import 'package:timekeeper/login_page/login_page.dart';
 import 'package:timekeeper/projects_widget.dart';
 import 'package:timekeeper/stats_widget.dart';
 import 'package:timekeeper/today_info_widget.dart';
-import 'package:timekeeper/databaseInterface.dart';
-import 'package:timekeeper/dataModel.dart';
+import 'package:timekeeper/database_interface.dart';
+import 'package:timekeeper/data_model.dart';
 
 
 Future <void> main() async {
@@ -44,19 +45,22 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home:  Main()
+      home:  const Main()
     );
   }
 }
 
 class Main extends StatefulWidget {
+  const Main({super.key});
+
   @override
-  _MainAppState createState() => _MainAppState();
+  createState() => _MainAppState();
 }
 
 class _MainAppState extends State<Main> {
-  bool _isLoggedIn = false;
+  final bool _isLoggedIn = false;
 
+  @override
   void initState() {
     super.initState();
     //TODO: Check if user is logged in or not
@@ -69,7 +73,7 @@ class _MainAppState extends State<Main> {
         primarySwatch: Colors.deepPurple,
 
       ),
-      home: _isLoggedIn ? const MyHomePage(title: "Time Keeper") : LoginPage()
+      home: _isLoggedIn ? const MyHomePage(title: "Time Keeper") : const LoginPage()
     );
   }
   
@@ -115,20 +119,20 @@ class _MyHomePageState extends State<MyHomePage> {
     db.getChargeCodes();
 
     DataModel dm = DataModel.instance;
-    print('id = ' + dm.user.id);
-    print('name = ' + dm.user.name);
-    print('password = ' + dm.user.password);
-    print('email = ' + dm.user.email);
-    print('phone = ' + dm.user.phone.toString());
-    print('supervisor id = ' + dm.user.supervisorId);
+    print('id = ${dm.user.id}');
+    print('name = ${dm.user.name}');
+    print('password = ${dm.user.password}');
+    print('email = ${dm.user.email}');
+    print('phone = ${dm.user.phone}');
+    print('supervisor id = ${dm.user.supervisorId}');
 
     for(int i = 0; i < dm.chargeCodes.length; i++) {
-      print('id = ' + dm.chargeCodes[i].id);
-      print('name = ' +  dm.chargeCodes[i].name);
-      print('budget = ' +  dm.chargeCodes[i].budget.toString());
-      print('description = ' +  dm.chargeCodes[i].description);
-      print('status = ' +  dm.chargeCodes[i].status.toString());
-      print('project = ' +  dm.chargeCodes[i].project);
+      print('id = ${dm.chargeCodes[i].id}');
+      print('name = ${dm.chargeCodes[i].name}');
+      print('budget = ${dm.chargeCodes[i].budget}');
+      print('description = ${dm.chargeCodes[i].description}');
+      print('status = ${dm.chargeCodes[i].status}');
+      print('project = ${dm.chargeCodes[i].project}');
     }
 
   }
