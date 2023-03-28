@@ -1,15 +1,18 @@
-class Client {
-  final String id;
-  final String name;
-  final String contactPerson;
-  final String phoneNumber;
-  final String emailAddress;
+class client {
+  final String address ;
 
-  Client({
-    required this.id,
-    required this.name,
-    required this.contactPerson,
-    required this.phoneNumber,
-    required this.emailAddress,
-  });
+  final String contactname;
+
+  final String email;
+
+
+  final String name;
+
+  final String phone;
+
+  
+
+  client(this.address, this.contactname, this.email,  this.name,
+      this.phone);
 }
+

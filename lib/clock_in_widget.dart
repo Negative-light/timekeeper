@@ -57,10 +57,11 @@ class _ClockInState extends State<ClockInWidget> {
       //Clock In Only
       return Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Flexible(
               fit: FlexFit.tight,
-              flex: 4,
+              flex: 10,
               child: ClockButton(
                 onPressed: _clockIn,
                 icon: const Icon(Icons.access_time_filled),
