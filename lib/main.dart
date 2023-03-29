@@ -18,8 +18,7 @@ Future <void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   Database db = Database.instance;
-  db.connectToDatabase();
-
+  await db.connectToDatabase();
   runApp(const MyApp());
 }
 
@@ -64,6 +63,7 @@ class _MainAppState extends State<Main> {
   void initState() {
     super.initState();
     //TODO: Check if user is logged in or not
+
   }
   @override
   Widget build(BuildContext context) {
@@ -74,6 +74,7 @@ class _MainAppState extends State<Main> {
 
       ),
       home: _isLoggedIn ? const MyHomePage(title: "Time Keeper") : const LoginPage()
+       // home: const MyHomePage(title: "Time Keeper")
     );
   }
   
@@ -99,6 +100,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _currentNavIndex = 2;
+
   final screens = [
     StatsWidget(),
     const TodayWidget(),
@@ -109,31 +111,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
   void _onNavBarClick(int index) {
+    ChargeCodesWidget().refresh();
     setState(() {
       _currentNavIndex = index;
+      ChargeCodesWidget();
     });
-
-    //test to get data
-    Database db = Database.instance;
-    db.getUser('testUser', 'password');
-    db.getChargeCodes();
-
-    DataModel dm = DataModel.instance;
-    print('id = ${dm.user.id}');
-    print('name = ${dm.user.name}');
-    print('password = ${dm.user.password}');
-    print('email = ${dm.user.email}');
-    print('phone = ${dm.user.phone}');
-    print('supervisor id = ${dm.user.supervisorId}');
-
-    for(int i = 0; i < dm.chargeCodes.length; i++) {
-      print('id = ${dm.chargeCodes[i].id}');
-      print('name = ${dm.chargeCodes[i].name}');
-      print('budget = ${dm.chargeCodes[i].budget}');
-      print('description = ${dm.chargeCodes[i].description}');
-      print('status = ${dm.chargeCodes[i].status}');
-      print('project = ${dm.chargeCodes[i].project}');
-    }
 
   }
 
@@ -145,6 +127,9 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
+    Database db = Database.instance;
+    db.getChargeCodes();
+
     return Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by

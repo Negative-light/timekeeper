@@ -55,8 +55,7 @@ class _LoginPageState extends State<LoginPage> {
                       border: OutlineInputBorder(),
                     ),
                     validator: (value) {
-
-                      return (value != null)? "Email is Required" : null;
+                      return (value == "")? "Email is Required" : null;
                     },
                   ),
                   const SizedBox(height: 20.0),
@@ -68,29 +67,30 @@ class _LoginPageState extends State<LoginPage> {
                       border: OutlineInputBorder(),
                     ),
                     validator: (value) {
-                      if (value == null) {
-                        return 'Password is required';
-                      }
-                      return null;
+                      return (value == "")? "Password is Required" : null;
                     },
                   ),
                   const SizedBox(height: 20.0),
                   ElevatedButton(
                     onPressed: () async {
-                 //     if (_formKey.currentState!.validate()) {
+                      if (_formKey.currentState!.validate()) {
 
                         Database db = Database.instance;
+
                         bool exists = await db.getUser(_emailController.text, _passwordController.text);
                         print('USER EXISTS = ' + exists.toString());
 
                         if(exists) {
-                          Navigator.pushReplacement(
+                          print('navigating to new page');
+                          Navigator.pushAndRemoveUntil(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const MyApp()),
+                                builder: (context) => const MyHomePage(title: "Time Keeper")),
+                            ModalRoute.withName("/home")
                           );
                         }
-                  //    }
+
+                      }
                     },
                     child: const Text('Login'),
                   ),
