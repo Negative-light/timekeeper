@@ -22,7 +22,7 @@ class Database {
   //get firestore reference
   Future<void>  connectToDatabase() async {
     await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
+      options: DefaultFirebaseOptions.android,
     );
 
     db = FirebaseFirestore.instance;
