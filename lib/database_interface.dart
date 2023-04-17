@@ -20,9 +20,9 @@ class Database {
   dynamic db;
 
   //get firestore reference
-  void connectToDatabase() async {
+  Future<void>  connectToDatabase() async {
     await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
+      options: DefaultFirebaseOptions.android,
     );
 
     db = FirebaseFirestore.instance;
@@ -79,10 +79,13 @@ class Database {
         onError: (e) => print("Error adding user : $e"));
   }
 
-  bool getChargeCodes() {
+  Future<bool> getChargeCodes() async {
     bool gotCodes = false;
-    db.collection("chargeCodes").get().then(
-      (querySnapshot) {
+    await db
+        .collection("chargeCodes")
+        .get()
+        .then(
+        (querySnapshot) {
         List<ChargeCode> chargeCodes = <ChargeCode>[];
         for (var docSnapshot in querySnapshot.docs) {
           gotCodes = true;
@@ -90,12 +93,13 @@ class Database {
           ChargeCode cc = ChargeCode(
               docSnapshot.id,
               data['Budget'],
+              data['Status'],
               data['Name'],
-              data['Description'],
               data['Description'],
               data['Project'],
               data['OwnerId']);
           chargeCodes.add(cc);
+          print("got charge code");
         }
         DataModel.instance.chargeCodes = chargeCodes;
       },
