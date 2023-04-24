@@ -21,39 +21,55 @@ flowchart
     GUI-->FirestoreSDK-->Database
 ```
 The Complex part is how our database connects. Below you can see a connected database graph or our whole database.
+
 ![Database Structure](./assets/documentation/DB-Structure.png)
+
 This database has been filled with temporary data for engineering purposes. Below is our sample data on the Firestore Database.
 
 We currently have one sample client:
 
-![Client Table](./assets/documentation/Client Table.png)
+![Client Table](./assets/documentation/Client_Table.png)
 
 One sample Project:
+
 ![Projects](./assets/documentation/Projects.png)
+
 Two sample Charge Codes:
-![Charge Codes](./assets/documentation/Charage Codes.png)
+
+![Charge Codes](./assets/documentation/Charge_Codes.png)
 
 One sample user budget:
-![User Budgets]](./assets/documentation/User Budgets.png)
+
+![User Budgets](./assets/documentation/User_Budgets.png)
 
 And three sample users:
+
 ![Users.png](./assets/documentation/Users.png)
 
 # Prototype
 For our UI we have working versions of several of our UI Elements planned. Below is an example of our Projects view which we filled with dummy data. This same view is going to be used in the Charge Codes and Stats View. These are primary used to show the user status of a project or the charge codes they have available.
-![Projects Widget View.png](./assets/documentation/Projects%20Widget%20View.png)
+
+![Projects Widget View.png](./assets/documentation/Projects_Widget_View.png)
 
 
 To connect to the database one must first login so we can provide all information they are allowed to see.
-![Login Page Empty.png](./assets/documentation/Login%20Page%20Empty.png)
+
+![Login Page Empty.png](./assets/documentation/Login_Page_Empty.png)
+
 After entering their information the database checks if they are really users and logs them in.
-![Valid User.png](./assets/documentation/Valid%20User.png)
+
+![Valid User.png](./assets/documentation/Valid_User.png)
+
 If the yare the console does print out some information for develop usage.
-![Invalid User.png](./assets/documentation/Invalid%20User.png)
+
+![Invalid User.png](./assets/documentation/Invalid_User.png)
+
 If not they will similarly be informed.
 
 Finally after login they will land on our pinch in Home page. In future development we will post to the database their clock-in and clock-out times.
-![Home Screen.png](./assets/documentation/Home%20Screen.png)
+
+![Home Screen.png](./assets/documentation/Home_Screen.png)
+
 This screen is the primary piece of TimeKeeper, easy trackable method to clock-in. From here the Home tab allows the user to select Lunch or Clock Out. If the user Clocks out it will post their times and return to the Clock In view. If the user selects Lunch it will let them clock back in and then clock out.
 
 ```mermaid
