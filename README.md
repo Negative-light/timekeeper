@@ -1,28 +1,36 @@
-# timekeeper
+# TimeKeeper
 
-TimeKeeper is a project from %%TODO: Add Names Alpha order %% for a Database Design course at Mercer University.
-This project was designed 
+**TimeKeeper** is a project from Dylan DeVries, Mohammad Zaidi, and Paul Pace for a Database Design course at Mercer University.
+This project was designed to help  track hours worked for various projects currently focusing on capturing punch-in times such as clocking in, leaving for lunch, returning from lunch, and clocking out. The project also allows the user to view data points from the database in relationship to projects, and charge codes.
+The Current state of the project is rather rudimentary focusing on the database design and retrieving data from it, but could easily be expanded to a enterprise grade project, task and time keeping system. This project should be considered more of a proof of concept design rather than a final implementation.
 
 
 
 
 # Overview
-When it comes to time tracking for Work there are very few options that lower level employees have access to. This is why we elected to design a time keeping application that will allow a employee to punch in and out during the work day and track how many hours they have left on a charge code. We call this project **TimeKeeper**.
+**Timekeeper** is a flutter application designed to work dynamically for each companies specific use case with little modification. This requires a simplistic design with modifiable styles, and page toggling. To start we have designed a minimum viable product that will allow employees to enter their punch-in times and track how many hours they have worked in a day. Additionally we have added views for charge codes, and projects for each user so that users can see the current budget for these items. Future development would include the ability to add user permissions for projects and charged codes allowing them to add, view or edit these fields and the ability for the company to establish which views they would like to use. 
 
 # Design
-* How to build a UI in Flutter
-* How to connect to Firebase
-* How to pull and display data from Firebase.
 
+The design of our Flutter app is fairly typical. We are using the Firestore database service from Firebase and are using a simplistic Model View for all of our data.
+
+## Framework
 The Framework for this database is rather simple.
 
 ```mermaid
-flowchart
+flowchart LR
     GUI-->FirestoreSDK-->Database
 ```
-The Complex part is how our database connects. Below you can see a connected database graph or our whole database.
+
+This is the common structure for any application using Firebase. The GUI connects the Firestore SDK and that communicates with the database. This makes the database connection simple if configured properly. Future development may move away from Firestore to a self-host alternative allowing for companies to own their own data.
+## Database Architecture
+The Complex part is how our database connects internally. Below you can see a connected database graph or our whole database.
 
 ![Database Structure](./assets/documentation/DB-Structure.png)
+
+If you would like to know about the different fields please the [Database Dictionary](#database-dictionary).
+
+### Sample Data
 
 This database has been filled with temporary data for engineering purposes. Below is our sample data on the Firestore Database.
 
@@ -46,7 +54,7 @@ And three sample users:
 
 ![Users.png](./assets/documentation/Users.png)
 
-# Prototype
+## Prototype
 For our UI we have working versions of several of our UI Elements planned. Below is an example of our Projects view which we filled with dummy data. This same view is going to be used in the Charge Codes and Stats View. These are primary used to show the user status of a project or the charge codes they have available.
 
 ![Projects Widget View.png](./assets/documentation/Projects_Widget_View.png)
@@ -84,3 +92,10 @@ flowchart LR
 ```
 
 To try out our flutter project may take some step please refer to the included codebase.
+
+
+
+
+# Appendix
+
+## Database Dictionary
