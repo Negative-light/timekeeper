@@ -1,6 +1,6 @@
 # TimeKeeper
 
-**TimeKeeper** is a project from Dylan DeVries, Mohammad Zaidi, and Paul Pace for a Database Design course at Mercer University.
+**TimeKeeper** is a project from Dylan DeVries, Paul Pace, Thomas Judge (TJ) for a Database Design course at Mercer University.
 This project was designed to help track hours worked for various projects currently focusing on capturing punch-in times such as clocking in, leaving for lunch, returning from lunch, and clocking out. The project also allows the user to view data points from the database in relationship to projects, and charge codes.
 The Current state of the project is rather rudimentary focusing on the database design and retrieving data from it, but could easily be expanded to a enterprise grade project, task and time keeping system. This project should be considered more of a proof of concept design rather than a final implementation.
 
@@ -162,7 +162,7 @@ To try out our flutter project may take some step please refer to the included c
 | End_Date       | Datetime     | End Date for spending on this budget                       |
 | Document ID\*  | String (PK)  | Firestore Document ID                                      |
 
-\*Firestore automatically creates document id's for all table entries
+\* Firestore automatically creates document id's for all table entries
 
 ### Charge Codes
 
