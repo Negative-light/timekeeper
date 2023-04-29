@@ -13,6 +13,7 @@ class DataModel {
 
   //current user
   User user =  User();
+  Project p = Project();
 
   //list containing charge code objects
   List<ChargeCode> chargeCodes = <ChargeCode>[];
