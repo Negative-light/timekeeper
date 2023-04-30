@@ -60,10 +60,11 @@ And three sample users:
 For our UI we have working versions of several of our UI Elements planned. Below is an example of our Projects view which we filled with dummy data. This same view is going to be used in the Charge Codes and Stats View. These are primary used to show the user status of a project or the charge codes they have available.
 
 ![Projects Widget View.png](./assets/documentation/Projects_Widget_View.png)
+![Charge Codes View](./assets/documentation/charge_codes_page.png)
 
 To connect to the database one must first login so we can provide all information they are allowed to see.
 
-![Login Page Empty.png](./assets/documentation/Login_Page_Empty.png)
+![Login Page Empty.png](./assets/documentation/login.png)
 
 After entering their information the database checks if they are really users and logs them in.
 
@@ -77,7 +78,8 @@ If not they will similarly be informed.
 
 Finally after login they will land on our pinch in Home page. In future development we will post to the database their clock-in and clock-out times.
 
-![Home Screen.png](./assets/documentation/Home_Screen.png)
+![Home Screen.png](./assets/documentation/clock-in.png)
+![Clock Time](./assets/documentation/clock-out_and_lunch.png)
 
 This screen is the primary piece of TimeKeeper, easy trackable method to clock-in. From here the Home tab allows the user to select Lunch or Clock Out. If the user Clocks out it will post their times and return to the Clock In view. If the user selects Lunch it will let them clock back in and then clock out.
 Below is a flowchart diagram to help explain the workflow for using the Home page.
