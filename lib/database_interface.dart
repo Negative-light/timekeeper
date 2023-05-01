@@ -8,7 +8,7 @@ import 'package:timekeeper/firebase_options.dart';
 import 'objects/charge_code.dart';
 import 'objects/user.dart';
 import 'objects/project.dart';
-
+import  'clock_in_widget.dart';
 class Database {
   //singleton class database reference
   Database._privateConstructor();
@@ -104,7 +104,21 @@ class Database {
             print("Added Data with ID: ${documentSnapshot.id}"),
         onError: (e) => print("Error adding user : $e"));
   }
-
+  
+ /*
+ void store_time(
+      String ChargeCode, PunchInTime timestamp, int punchInType , int UserID) {
+    final data = <String, dynamic>{
+      "charge code": chargecCode,
+      "PunchInTime": PunchInTime,
+      "PunchInType": PunchInType,
+      "UserID": UserID,
+      
+    };
+ }
+ 
+  
+*/
   Future<bool> getChargeCodes() async {
     bool gotCodes = false;
     await db
