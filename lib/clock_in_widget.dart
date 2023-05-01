@@ -156,16 +156,23 @@ class _ClockInState extends State<ClockInWidget> {
 
   void _clockIn() {
     //TODO: Set Clock in in Database
+  
     setState(() {
 
       if(_currentState == ClockInState.clockIn)
         {
+        // dt = datetime.now()
+    
           //log("NEXT STATE LUNCH");
           _currentState = ClockInState.lunch;
+         interface.store_time(clockIn);
         }
       else if (_currentState == ClockInState.lunchClockIn){
         //log("NEXT STATE CLOCK OUT");
         _currentState = ClockInState.clockOut;
+       // dt = datetime.now()
+        interface.store_time(lunchClockIn);
+      
       }
 
     });
@@ -173,16 +180,21 @@ class _ClockInState extends State<ClockInWidget> {
 
   void _lunch() {
     //TODO: Set Lunch in Database
+    
     setState(() {
      _currentState = ClockInState.lunchClockIn;
-     //log("NEXT STATE LUNCH CLOCK IN");
+       dt = datetime.now()
+     interface.store_time(lunch);
+      //log("NEXT STATE LUNCH CLOCK IN");
 
     });
   }
 
   void _clockOut() {
     //TODO: Set Clock Out in Database
+       interface.store_time(clockOut);
     setState(() {
+        dt = datetime.now()
       _currentState = ClockInState.clockIn;
     });
   }
