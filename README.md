@@ -41,7 +41,7 @@ We currently have one sample client:
 
 One sample Project:
 
-![Projects](./assets/documentation/Projects.png)
+![Projects](./assets/documentation/projects-v2.png)
 
 Two sample Charge Codes:
 
