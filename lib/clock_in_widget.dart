@@ -203,6 +203,6 @@ class _ClockInState extends State<ClockInWidget> {
       _currentState = ClockInState.clockIn;
     });
     DateTime dt = DateTime.now();
-    Database.instance.store_time("", dt, ClockInState.clockOut.index, 1);
+    Database.instance.store_time("", dt, ClockInState.clockOut.index);
   }
 }

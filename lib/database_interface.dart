@@ -108,13 +108,18 @@ class Database {
 
  void store_time(
       String chargeCode, DateTime timestamp, int punchInType) {
+
     final data = <String, dynamic>{
       "charge code": chargeCode,
       "PunchInTime": timestamp,
       "PunchInType": punchInType,
-      "UserID": DataModel.instance.user,
-      
+      "UserID": DataModel.instance.user.id,
     };
+
+    db.collection("Punch In").add(data).then(
+            (documentSnapshot) =>
+            print("Added Data with ID: ${documentSnapshot.id}"),
+        onError: (e) => print("Error adding punch in : $e"));
  }
 
   Future<bool> getChargeCodes() async {
