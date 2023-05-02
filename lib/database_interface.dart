@@ -105,20 +105,18 @@ class Database {
         onError: (e) => print("Error adding user : $e"));
   }
   
- /*
+
  void store_time(
-      String ChargeCode, PunchInTime timestamp, int punchInType , int UserID) {
+      String chargeCode, DateTime timestamp, int punchInType , int userID) {
     final data = <String, dynamic>{
-      "charge code": chargecCode,
-      "PunchInTime": PunchInTime,
-      "PunchInType": PunchInType,
-      "UserID": UserID,
+      "charge code": chargeCode,
+      "PunchInTime": timestamp,
+      "PunchInType": punchInType,
+      "UserID": userID,
       
     };
  }
- 
-  
-*/
+
   Future<bool> getChargeCodes() async {
     bool gotCodes = false;
     await db
