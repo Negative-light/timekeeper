@@ -4,6 +4,7 @@ class ChargeCode {
   final int budget;
 
   final int status;
+
   final String description;
 
   final String name;

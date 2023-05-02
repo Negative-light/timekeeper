@@ -7,7 +7,8 @@ import 'package:timekeeper/firebase_options.dart';
 
 import 'objects/charge_code.dart';
 import 'objects/user.dart';
-
+import 'objects/project.dart';
+import  'clock_in_widget.dart';
 class Database {
   //singleton class database reference
   Database._privateConstructor();
@@ -61,7 +62,32 @@ class Database {
 
       return gotUser;
   }
+  Future<bool> getProjects() async{
+    await db
+        .collection("Projects")
+        .get()
+        .then(
+          (querySnapshot) {
 
+        print("Successfully completed");
+
+        for (var docSnapshot in querySnapshot.docs) {
+          final data = docSnapshot.data() as Map<String, dynamic>;
+          Project p = Project();
+          p.id = docSnapshot.id;
+          p.name = (data['Name']).toString();
+          p.leadUserId = (data['Lead']).toString();
+          p.client = (data['Client']).toString();
+          p.projectBudget = data['Budget'];
+          p.startDate = DateTime(2023);
+          DataModel.instance.projects.add(p);
+          print ("adding project with id " + docSnapshot.id);
+        }
+      },
+      onError: (e) => print("Error completing: $e"),
+    );
+    return true;
+  }
   //publishes user to db
   void storeUser(
       String email, String name, String password, int phone, supervisorId) {
@@ -78,6 +104,23 @@ class Database {
             print("Added Data with ID: ${documentSnapshot.id}"),
         onError: (e) => print("Error adding user : $e"));
   }
+  
+
+ void store_time(
+      String chargeCode, DateTime timestamp, int punchInType) {
+
+    final data = <String, dynamic>{
+      "charge code": chargeCode,
+      "PunchInTime": timestamp,
+      "PunchInType": punchInType,
+      "UserID": DataModel.instance.user.id,
+    };
+
+    db.collection("Punch In").add(data).then(
+            (documentSnapshot) =>
+            print("Added Data with ID: ${documentSnapshot.id}"),
+        onError: (e) => print("Error adding punch in : $e"));
+ }
 
   Future<bool> getChargeCodes() async {
     bool gotCodes = false;
