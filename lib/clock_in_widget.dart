@@ -1,5 +1,10 @@
 
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'database_interface.dart';
+import 'data_model.dart';
+import 'objects/charge_code.dart';
+import 'objects/Punch_in.dart';
 
 class ClockInWidget extends StatefulWidget {
   const ClockInWidget({super.key});
@@ -7,7 +12,37 @@ class ClockInWidget extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _ClockInState();
 }
+ /* Widget build(BuildContext context) {
 
+  CollectionReference referenceToProj = Database.instance.db.collection('Punch In');
+    _projectStream = referenceToProj.snapshots();
+  State<StatefulWidget> createState() => _ClockInState();
+  return Scaffold(
+        body: StreamBuilder<QuerySnapshot>(
+            stream: _codeStream,
+            builder: (BuildContext context, AsyncSnapshot snapshot) {
+              if (snapshot.hasError) {
+                return Center(child: Text(snapshot.error.toString()));
+              }
+              if (snapshot.connectionState == ConnectionState.active)
+              {
+                QuerySnapshot querySnapshot = snapshot.data;
+                var ClocckIn = [];
+                for (var docSnapshot in querySnapshot.docs) {
+                  final data = docSnapshot.data() as Map<String, dynamic>;
+
+                //get project name corresponding to the current charge code
+                 String name = "";
+                 for(Clock  in DataModel.instance.clock_in){
+                   final data = docSnapshot.data() as Map<String, dynamic>;
+                clock_in C = Clock_IN();
+             C.Punchintime = DateTime(2023);
+             C.Chargecode = (data['Chargecode']).toString();
+             C.punch in type = data['punch in type']
+             C.userID = (data['User ID']).toString();
+             
+             ClockIn.add(C);
+               } */
 class ClockButton extends StatelessWidget {
   final VoidCallback? onPressed;
   final Icon icon;
@@ -50,6 +85,8 @@ class _ClockInState extends State<ClockInWidget> {
 
   ClockInState _currentState =
       ClockInState.clockIn; //0 => Clock In Button Only, 1 => Clock Out & Lunch, 2 => Clock out
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -121,16 +158,24 @@ class _ClockInState extends State<ClockInWidget> {
 
   void _clockIn() {
     //TODO: Set Clock in in Database
+  
     setState(() {
 
       if(_currentState == ClockInState.clockIn)
         {
+         DateTime dt = DateTime.now();
+    
           //log("NEXT STATE LUNCH");
           _currentState = ClockInState.lunch;
+         //interface.store_time(ClockInState.clockIn);
+         Database.instance.store_time("", dt, ClockInState.clockIn.index);
         }
       else if (_currentState == ClockInState.lunchClockIn){
         //log("NEXT STATE CLOCK OUT");
         _currentState = ClockInState.clockOut;
+       DateTime dt = DateTime.now();
+        //interface.store_time(ClockInState.lunchClockIn);
+        Database.instance.store_time("", dt, ClockInState.lunchClockIn.index);
       }
 
     });
@@ -138,17 +183,26 @@ class _ClockInState extends State<ClockInWidget> {
 
   void _lunch() {
     //TODO: Set Lunch in Database
+    
     setState(() {
      _currentState = ClockInState.lunchClockIn;
-     //log("NEXT STATE LUNCH CLOCK IN");
+       DateTime dt = DateTime.now();
+       Database.instance.store_time("", dt, ClockInState.lunch.index);
+     //interface.store_time(ClockInState.lunch);
+      //log("NEXT STATE LUNCH CLOCK IN");
 
     });
   }
 
   void _clockOut() {
     //TODO: Set Clock Out in Database
+       //interface.store_time(ClockInState.clockOut);
+
     setState(() {
+
       _currentState = ClockInState.clockIn;
     });
+    DateTime dt = DateTime.now();
+    Database.instance.store_time("", dt, ClockInState.clockOut.index);
   }
 }

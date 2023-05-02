@@ -1,7 +1,5 @@
 
 // ignore_for_file: avoid_print
-
-
 import 'package:flutter/material.dart';
 
 import 'package:timekeeper/charge_codes_widget.dart';
@@ -11,7 +9,6 @@ import 'package:timekeeper/projects_widget.dart';
 import 'package:timekeeper/stats_widget.dart';
 import 'package:timekeeper/today_info_widget.dart';
 import 'package:timekeeper/database_interface.dart';
-import 'package:timekeeper/data_model.dart';
 
 
 Future <void> main() async {
@@ -19,6 +16,7 @@ Future <void> main() async {
 
   Database db = Database.instance;
   await db.connectToDatabase();
+
   runApp(const MyApp());
 }
 
@@ -61,10 +59,10 @@ class _MainAppState extends State<Main> {
 
   @override
   void initState() {
+    Database.instance.getProjects();
     super.initState();
-    //TODO: Check if user is logged in or not
-
   }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -109,12 +107,9 @@ class _MyHomePageState extends State<MyHomePage> {
     ProjectsWidget()
   ];
 
-
   void _onNavBarClick(int index) {
-    ChargeCodesWidget().refresh();
     setState(() {
       _currentNavIndex = index;
-      ChargeCodesWidget();
     });
 
   }
@@ -127,8 +122,6 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
-    Database db = Database.instance;
-    db.getChargeCodes();
 
     return Scaffold(
       appBar: AppBar(
