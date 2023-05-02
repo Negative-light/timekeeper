@@ -107,12 +107,12 @@ class Database {
   
 
  void store_time(
-      String chargeCode, DateTime timestamp, int punchInType , int userID) {
+      String chargeCode, DateTime timestamp, int punchInType) {
     final data = <String, dynamic>{
       "charge code": chargeCode,
       "PunchInTime": timestamp,
       "PunchInType": punchInType,
-      "UserID": userID,
+      "UserID": DataModel.instance.user,
       
     };
  }
