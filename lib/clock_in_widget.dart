@@ -86,6 +86,8 @@ class _ClockInState extends State<ClockInWidget> {
   ClockInState _currentState =
       ClockInState.clockIn; //0 => Clock In Button Only, 1 => Clock Out & Lunch, 2 => Clock out
 
+
+
   @override
   Widget build(BuildContext context) {
     if (_currentState == ClockInState.clockIn || _currentState == ClockInState.lunchClockIn) {
@@ -161,17 +163,17 @@ class _ClockInState extends State<ClockInWidget> {
 
       if(_currentState == ClockInState.clockIn)
         {
-        // dt = datetime.now()
+         DateTime dt = DateTime.now();
     
           //log("NEXT STATE LUNCH");
           _currentState = ClockInState.lunch;
-         interface.store_time(clockIn);
+         interface.store_time(ClockInState.clockIn);
         }
       else if (_currentState == ClockInState.lunchClockIn){
         //log("NEXT STATE CLOCK OUT");
         _currentState = ClockInState.clockOut;
        // dt = datetime.now()
-        interface.store_time(lunchClockIn);
+        interface.store_time(ClockInState.lunchClockIn);
       
       }
 
@@ -183,8 +185,8 @@ class _ClockInState extends State<ClockInWidget> {
     
     setState(() {
      _currentState = ClockInState.lunchClockIn;
-       dt = datetime.now()
-     interface.store_time(lunch);
+       DateTime dt = DateTime.now();
+     interface.store_time(ClockInState.lunch);
       //log("NEXT STATE LUNCH CLOCK IN");
 
     });
@@ -192,9 +194,9 @@ class _ClockInState extends State<ClockInWidget> {
 
   void _clockOut() {
     //TODO: Set Clock Out in Database
-       interface.store_time(clockOut);
+       interface.store_time(ClockInState.clockOut);
     setState(() {
-        dt = datetime.now()
+      DateTime dt = DateTime.now();
       _currentState = ClockInState.clockIn;
     });
   }
